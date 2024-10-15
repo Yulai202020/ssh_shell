@@ -41,10 +41,7 @@ void execute_command(ssh_session session, const char *command) {
         ssh_channel_free(channel);
         return;
     }
-
-    // Send the command to the shell
-    ssh_channel_write(channel, command, strlen(command));
-    ssh_channel_write(channel, "\n", 1);  // Simulate pressing Enter
+    ssh_channel_write(channel, " ", 1);  // Simulate pressing Enter
 
     // Read the output
     while ((nbytes = ssh_channel_read(channel, buffer, sizeof(buffer) - 1, 0)) > 0) {
